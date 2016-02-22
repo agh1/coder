@@ -68,7 +68,10 @@ class Drupal_Sniffs_Array_ArraySniff implements PHP_CodeSniffer_Sniff
         );
 
         // Empty array.
-        if ($lastItem === $tokens[$stackPtr][$parenthesis_opener]) {
+        if ($lastItem === $tokens[$stackPtr][$parenthesis_opener]
+            || empty($tokens[$stackPtr][$parenthesis_opener])
+            || empty($tokens[$stackPtr][$parenthesis_closer])
+        ) {
             return;
         }
 
